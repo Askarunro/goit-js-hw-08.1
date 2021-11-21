@@ -19,6 +19,7 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+
       {
         test: /\.html$/i,
         loader: 'html-loader',
@@ -27,12 +28,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template: './src/index.html' }),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
+    new MiniCssExtractPlugin({ filename: 'style.css' }),
   ],
 
   //   devServer: {
