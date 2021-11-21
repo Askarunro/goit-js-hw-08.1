@@ -1,0 +1,43 @@
+const path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+        // exclude: /node_modules/,
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({ template: 'src/index.html' }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
+
+  //   devServer: {
+  //     port: 4444,
+  //     open: true,
+  //     stats: 'errors-only',
+  //   },
+};

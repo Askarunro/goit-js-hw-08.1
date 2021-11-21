@@ -1,7 +1,9 @@
-console.log(galleryItems);
+import { galleryItems } from './gallery-items';
+import SimpleLightbox from '../node_modules/simplelightbox';
 
-import { galleryItems } from './gallery-items.js';
+export default 'gallery';
 // Change code below this line
+console.log(galleryItems);
 
 const galleryContainar = document.querySelector('.gallery');
 const cardsMarkup = createImgCardsMarkup(galleryItems);
@@ -40,3 +42,4 @@ const lightbox = new SimpleLightbox('.gallery__item', {
   captionDelay: 250,
   infinite: false,
 });
+console.log('hi');
